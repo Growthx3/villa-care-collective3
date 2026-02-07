@@ -3,7 +3,6 @@
 import { useRef, useState, useEffect } from 'react';
 import { motion, useScroll, AnimatePresence } from 'framer-motion';
 import clsx from 'clsx';
-// Removed Plus icon as requested
 
 // Data for the 6 Pillars
 const PILLARS = [
@@ -101,14 +100,14 @@ export default function PillarScroll() {
     }, [scrollYProgress, activeIndex]);
 
     return (
-        <section ref={containerRef} className="relative h-[600vh] w-full bg-background">
+        <section ref={containerRef} className="relative h-[600vh] w-full bg-background font-sans">
             <div className="sticky top-0 flex h-screen w-full items-center justify-center overflow-hidden px-4 md:px-8 lg:px-16 py-12">
 
                 {/* Grid Layout - Two Cards */}
                 <div className="grid w-full max-w-7xl grid-cols-1 gap-6 lg:grid-cols-2 lg:gap-8 h-[80vh]">
 
-                    {/* Left Column: Navigation Card */}
-                    <div className="flex flex-col justify-center rounded-3xl bg-[#1a1a1a] p-8 lg:p-12 shadow-2xl">
+                    {/* Left Column: Navigation Card - Dark Beige */}
+                    <div className="flex flex-col justify-center rounded-3xl bg-[#BFC0BC] p-8 lg:p-12 shadow-xl">
                         <div className="space-y-6 lg:space-y-8">
                             {PILLARS.map((pillar, index) => (
                                 <motion.div
@@ -119,8 +118,8 @@ export default function PillarScroll() {
                                         className={clsx(
                                             "text-3xl font-light tracking-tight transition-all duration-500 md:text-4xl lg:text-5xl",
                                             index === activeIndex
-                                                ? "text-white opacity-100 scale-105 origin-left"
-                                                : "text-gray-500 opacity-40 hover:opacity-60"
+                                                ? "text-[#202020] opacity-100 scale-105 origin-left"
+                                                : "text-[#808076] opacity-60 hover:opacity-80"
                                         )}
                                     >
                                         {pillar.title}
@@ -130,8 +129,8 @@ export default function PillarScroll() {
                         </div>
                     </div>
 
-                    {/* Right Column: Content Card */}
-                    <div className="relative flex items-center justify-start rounded-3xl bg-[#DCD8D3] p-8 lg:p-16 shadow-2xl">
+                    {/* Right Column: Content Card - Lighter Beige */}
+                    <div className="relative flex items-center justify-start rounded-3xl bg-[#DCD8D3] p-8 lg:p-16 shadow-xl">
                         <div className="w-full">
                             <AnimatePresence mode="wait">
                                 <motion.div
@@ -142,8 +141,7 @@ export default function PillarScroll() {
                                     transition={{ duration: 0.5, ease: "easeOut" }}
                                     className="relative"
                                 >
-                                    {/* Optional: Detail Title if different from Nav Title */}
-                                    <h3 className="mb-8 text-2xl font-medium text-black md:text-3xl">
+                                    <h3 className="mb-8 text-2xl font-medium text-[#000000] md:text-3xl">
                                         {PILLARS[activeIndex].displayTitle || PILLARS[activeIndex].title}
                                     </h3>
 
@@ -154,14 +152,13 @@ export default function PillarScroll() {
                                                 initial={{ opacity: 0, y: 10 }}
                                                 animate={{ opacity: 1, y: 0 }}
                                                 transition={{ delay: i * 0.1 }}
-                                                className="flex items-start gap-4 text-base font-medium leading-relaxed text-black md:text-lg"
+                                                className="flex items-start gap-4 text-base font-medium leading-relaxed text-[#000000] md:text-lg"
                                             >
-                                                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/60" />
+                                                <span className="mt-2.5 h-1.5 w-1.5 shrink-0 rounded-full bg-black/40" />
                                                 <span>{point}</span>
                                             </motion.li>
                                         ))}
                                     </ul>
-
                                 </motion.div>
                             </AnimatePresence>
                         </div>
